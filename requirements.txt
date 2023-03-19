@@ -1,3 +1,3 @@
-pymongo==4.2.0
+pymongo==4.2.0   # pymongo[srv]==4.2.0 if getting data from localhost
 
 -e .   # same as find_packages() function
