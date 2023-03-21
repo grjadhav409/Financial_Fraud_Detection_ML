@@ -1,8 +1,10 @@
 import pymongo
 from sensor.constant.database import DATABASE_NAME
+from sensor.exception import SensorException
+from sensor.logger import logging
 # from sensor.constant.env_variable import MONGODB_URL_KEY
 import certifi
-import os
+import os,sys
 ca = certifi.where()
 
 class MongoDBClient:
@@ -24,5 +26,6 @@ class MongoDBClient:
             self.database_name = database_name
             
         except Exception as e:
-            raise e
+            logging.error(SensorException(e,sys))
+            raise SensorException(e,sys)
 
