@@ -18,7 +18,6 @@ class DataInjestion:
             self.data_injestion_config = data_injestion_config
 
         except Exception as e:
-            logging.error(SensorException(e,sys))
             raise SensorException(e,sys)
         
     def export_data_to_feature_store(self) -> pd.DataFrame:
@@ -43,7 +42,6 @@ class DataInjestion:
             return df 
 
         except Exception as e:
-            logging.error(SensorException(e,sys))
             raise SensorException(e,sys)
         
     def split_data_as_train_test(self, dataframe: pd.DataFrame) -> None:
@@ -90,5 +88,4 @@ class DataInjestion:
             return data_injestion_artifact
 
         except Exception as e:
-            logging.error(SensorException(e,sys))
             raise SensorException(e,sys)
