@@ -9,6 +9,15 @@ from xgboost import XGBClassifier
 from sensor.ml.metric.classification_metric import get_classification_score
 from sensor.ml.model.estimator import SensorModel
 from sensor.utils.main_utils import save_object,load_object
+from sklearn.decomposition import PCA
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import StandardScaler
+
+
+
+
+
 class ModelTrainer:
 
     def __init__(self,model_trainer_config:ModelTrainerConfig,
@@ -22,11 +31,21 @@ class ModelTrainer:
     def perform_hyper_paramter_tunig(self):...
     
 
+    # def train_model(self,x_train,y_train):
+    #     try:
+    #         xgb_clf = XGBClassifier()
+    #         xgb_clf.fit(x_train,y_train)
+    #         return xgb_clf
+    #     except Exception as e:
+    #         raise e
+        
     def train_model(self,x_train,y_train):
         try:
-            xgb_clf = XGBClassifier()
-            xgb_clf.fit(x_train,y_train)
-            return xgb_clf
+            RF_model=Pipeline([('scalar3',StandardScaler()),
+                     ('pca3',PCA()),
+                     ('rf_classifier',RandomForestClassifier(random_state=42, max_features='auto', n_estimators= 100, max_depth=8, criterion='gini', min_samples_leaf= 15))])
+            RF_model.fit(x_train,y_train)
+            return RF_model
         except Exception as e:
             raise e
     

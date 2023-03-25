@@ -15,15 +15,13 @@ from sensor.cloud_storage.s3_syncer import S3Sync
 from sensor.constant.s3_bucket import TRAINING_BUCKET_NAME
 from sensor.constant.training_pipeline import SAVED_MODEL_DIR
 
-
 class TrainingPipeline():
 
-    # is_pipeline_running=False
+    is_pipeline_running=False
 
     def __init__(self):
         self.training_pipeline_config = TrainingPipelineConfig()
         self.s3_sync = S3Sync()
-
 
     def start_data_ingestion(self)->DataInjestionArtifact:
         try:
@@ -67,7 +65,6 @@ class TrainingPipeline():
         except  Exception as e:
             raise  SensorException(e,sys)
         
-
     def start_model_evaluation(self,data_validation_artifact:DataValidationArtifact,
                                  model_trainer_artifact:ModelTrainerArtifact,
                                 ):
@@ -102,24 +99,23 @@ class TrainingPipeline():
         except Exception as e:
             raise SensorException(e,sys)
 
-
     def run_pipeline(self):
         try:
-            # TrainingPipeline.is_pipeline_running=True
+            TrainingPipeline.is_pipeline_running=True
             data_injestion_artifact: DataInjestionArtifact = self.start_data_ingestion()
             data_validation_artifact: DataValidationArtifact = self.start_data_validaton(data_ingestion_artifact=data_injestion_artifact)
             data_transformation_artifact = self.start_data_transformation(data_validation_artifact=data_validation_artifact)
             model_trainer_artifact = self.start_model_trainer(data_transformation_artifact)
-            # model_eval_artifact:ModelEvaluationArtifact = self.start_model_evaluation(data_validation_artifact, model_trainer_artifact)
-            # if not model_eval_artifact.is_model_accepted:
-            #     raise Exception("Trained model is not better than the best model")
-            # model_pusher_artifact = self.start_model_pusher(model_eval_artifact)
-            # TrainingPipeline.is_pipeline_running=False
-            # self.sync_artifact_dir_to_s3()
-            # self.sync_saved_model_dir_to_s3()
+            model_eval_artifact:ModelEvaluationArtifact = self.start_model_evaluation(data_validation_artifact, model_trainer_artifact)
+            if not model_eval_artifact.is_model_accepted:
+                raise Exception("Trained model is not better than the best model")
+            model_pusher_artifact = self.start_model_pusher(model_eval_artifact)
+            TrainingPipeline.is_pipeline_running=False
+            self.sync_artifact_dir_to_s3()
+            self.sync_saved_model_dir_to_s3()
 
 
         except  Exception as e:
-            # self.sync_artifact_dir_to_s3()
-            # TrainingPipeline.is_pipeline_running=False
+            self.sync_artifact_dir_to_s3()
+            TrainingPipeline.is_pipeline_running=False
             raise  SensorException(e,sys)

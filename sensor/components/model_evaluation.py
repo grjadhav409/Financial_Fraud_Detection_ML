@@ -13,7 +13,6 @@ from sensor.ml.model.estimator import TargetValueMapping
 import pandas  as  pd
 class ModelEvaluation:
 
-
     def __init__(self,model_eval_config:ModelEvaluationConfig,
                     data_validation_artifact:DataValidationArtifact,
                     model_trainer_artifact:ModelTrainerArtifact):
@@ -25,8 +24,6 @@ class ModelEvaluation:
         except Exception as e:
             raise SensorException(e,sys)
     
-
-
     def initiate_model_evaluation(self)->ModelEvaluationArtifact:
         try:
             valid_train_file_path = self.data_validation_artifact.valid_train_file_path
@@ -44,7 +41,6 @@ class ModelEvaluation:
             train_model_file_path = self.model_trainer_artifact.trained_model_file_path
             model_resolver = ModelResolver()
             is_model_accepted=True
-
 
             if not model_resolver.is_model_exists():
                 model_evaluation_artifact = ModelEvaluationArtifact(
@@ -73,7 +69,6 @@ class ModelEvaluation:
                 is_model_accepted=True
             else:
                 is_model_accepted=False
-
             
             model_evaluation_artifact = ModelEvaluationArtifact(
                     is_model_accepted=is_model_accepted, 
@@ -92,7 +87,3 @@ class ModelEvaluation:
             
         except Exception as e:
             raise SensorException(e,sys)
-
-    
-    
-

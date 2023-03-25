@@ -6,6 +6,8 @@ from imblearn.combine import SMOTETomek
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import RobustScaler
 from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import PowerTransformer
+
 
 
 from sensor.constant.training_pipeline import TARGET_COLUMN
@@ -46,19 +48,30 @@ class DataTransformation:
             raise SensorException(e, sys)
 
 
+    # @classmethod
+    # def get_data_transformer_object(cls)->Pipeline:
+    #     try:
+    #         robust_scaler = RobustScaler()
+    #         simple_imputer = SimpleImputer(strategy="constant", fill_value=0)
+    #         preprocessor = Pipeline(
+    #             steps=[
+    #                 ("Imputer", simple_imputer), #replace missing values with zero
+    #                 ("RobustScaler", robust_scaler) #keep every feature in same range and handle outlier
+    #                 ]
+    #         )
+            
+    #         return preprocessor
+
+    #     except Exception as e:
+    #         raise SensorException(e, sys) from e
+
     @classmethod
     def get_data_transformer_object(cls)->Pipeline:
         try:
-            robust_scaler = RobustScaler()
-            simple_imputer = SimpleImputer(strategy="constant", fill_value=0)
-            preprocessor = Pipeline(
-                steps=[
-                    ("Imputer", simple_imputer), #replace missing values with zero
-                    ("RobustScaler", robust_scaler) #keep every feature in same range and handle outlier
-                    ]
-            )
-            
-            return preprocessor
+ 
+            power = PowerTransformer(method='yeo-johnson', standardize=True)
+
+            return power
 
         except Exception as e:
             raise SensorException(e, sys) from e
