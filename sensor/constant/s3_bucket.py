@@ -1,2 +1,2 @@
-TRAINING_BUCKET_NAME="fraud-detection-model"
-PREDICTION_BUCKET_NAME="fraud-detection-datasource"
+TRAINING_BUCKET_NAME="fraud-detection-s3bucket"
+PREDICTION_BUCKET_NAME="fraud-detection-s3bucket"
