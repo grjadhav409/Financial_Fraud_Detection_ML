@@ -1,3 +1,5 @@
+# Project Architecture
+![mlops-continuous-delivery-and-automation-pipelines-in-machine-learning-4-ml-automation-ci-cd](https://user-images.githubusercontent.com/96526399/228141222-e216e312-bdf1-49c0-a1ec-fb14d10668dd.svg)
 # Financial Fraud Detection using Machine Learning
 
 This project is aimed at building a machine learning model to detect financial fraud using classification techniques. The project has achieved 92% accuracy with the random forest algorithm. It has also conducted detailed exploratory data analysis (EDA) to handle outliers and balance the data to ensure generalized model building. Finally, the project has been deployed on AWS using Docker containers and implemented CI/CD pipelines and MLOps practices, leveraging technologies such as Git for versioning, Scikit-learn for model building, and Kafka and MongoDB for data storage and retrieval.
