@@ -10,16 +10,16 @@ from sklearn.preprocessing import PowerTransformer
 
 
 
-from sensor.constant.training_pipeline import TARGET_COLUMN
-from sensor.entity.artifact_entity import (
+from scripts.constant.training_pipeline import TARGET_COLUMN
+from scripts.entity.artifact_entity import (
     DataTransformationArtifact,
     DataValidationArtifact,
 )
-from sensor.entity.config_entity import DataTransformationConfig
-from sensor.exception import SensorException
-from sensor.logger import logging
-from sensor.ml.model.estimator import TargetValueMapping
-from sensor.utils.main_utils import save_numpy_array_data, save_object
+from scripts.entity.config_entity import DataTransformationConfig
+from scripts.exception import SensorException
+from scripts.logger import logging
+from scripts.ml.model.estimator import TargetValueMapping
+from scripts.utils.main_utils import save_numpy_array_data, save_object
 
 
 

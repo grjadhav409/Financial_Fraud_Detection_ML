@@ -4,10 +4,10 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 import json
-from sensor.configuration.mongo_db_connection import MongoDBClient
-from sensor.constant.database import DATABASE_NAME
-from sensor.exception import SensorException
-from sensor.logger import logging
+from scripts.configuration.mongo_db_connection import MongoDBClient
+from scripts.constant.database import DATABASE_NAME
+from scripts.exception import SensorException
+from scripts.logger import logging
 
 
 class SensorData:

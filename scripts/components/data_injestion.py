@@ -1,8 +1,8 @@
-from sensor.logger import logging
-from sensor.exception import SensorException
-from sensor.entity.config_entity import DataIngestionConfig
-from sensor.entity.artifact_entity import DataInjestionArtifact
-from sensor.data_access.sensor_data import SensorData
+from scripts.logger import logging
+from scripts.exception import SensorException
+from scripts.entity.config_entity import DataIngestionConfig
+from scripts.entity.artifact_entity import DataInjestionArtifact
+from scripts.data_access.sensor_data import SensorData
 import pandas as pd
 from sklearn.model_selection import train_test_split
 

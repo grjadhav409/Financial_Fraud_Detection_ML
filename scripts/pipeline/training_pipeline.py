@@ -1,19 +1,19 @@
-from sensor.entity.config_entity import TrainingPipelineConfig,ModelPusherConfig,ModelEvaluationConfig,ModelTrainerConfig
-from sensor.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig
-from sensor.entity.artifact_entity import DataInjestionArtifact, DataValidationArtifact, DataTransformationArtifact,ModelEvaluationArtifact,ModelPusherArtifact,ModelTrainerArtifact
-from sensor.logger import logging
-from sensor.exception import SensorException
-from sensor.components.data_injestion import DataInjestion
-from sensor.components.data_validation import DataValidation
-from sensor.components.data_transformation import DataTransformation
+from scripts.entity.config_entity import TrainingPipelineConfig,ModelPusherConfig,ModelEvaluationConfig,ModelTrainerConfig
+from scripts.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig
+from scripts.entity.artifact_entity import DataInjestionArtifact, DataValidationArtifact, DataTransformationArtifact,ModelEvaluationArtifact,ModelPusherArtifact,ModelTrainerArtifact
+from scripts.logger import logging
+from scripts.exception import SensorException
+from scripts.components.data_injestion import DataInjestion
+from scripts.components.data_validation import DataValidation
+from scripts.components.data_transformation import DataTransformation
 import os
 import sys
-from sensor.components.model_trainer import ModelTrainer
-from sensor.components.model_evaluation import ModelEvaluation
-from sensor.components.model_pusher import ModelPusher
-from sensor.cloud_storage.s3_syncer import S3Sync
-from sensor.constant.s3_bucket import TRAINING_BUCKET_NAME
-from sensor.constant.training_pipeline import SAVED_MODEL_DIR
+from scripts.components.model_trainer import ModelTrainer
+from scripts.components.model_evaluation import ModelEvaluation
+from scripts.components.model_pusher import ModelPusher
+from scripts.cloud_storage.s3_syncer import S3Sync
+from scripts.constant.s3_bucket import TRAINING_BUCKET_NAME
+from scripts.constant.training_pipeline import SAVED_MODEL_DIR
 
 class TrainingPipeline():
 

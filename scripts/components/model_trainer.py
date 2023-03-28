@@ -1,14 +1,14 @@
 
-from sensor.utils.main_utils import load_numpy_array_data
-from sensor.exception import SensorException
-from sensor.logger import logging
-from sensor.entity.artifact_entity import DataTransformationArtifact,ModelTrainerArtifact
-from sensor.entity.config_entity import ModelTrainerConfig
+from scripts.utils.main_utils import load_numpy_array_data
+from scripts.exception import SensorException
+from scripts.logger import logging
+from scripts.entity.artifact_entity import DataTransformationArtifact,ModelTrainerArtifact
+from scripts.entity.config_entity import ModelTrainerConfig
 import os,sys
 from xgboost import XGBClassifier
-from sensor.ml.metric.classification_metric import get_classification_score
-from sensor.ml.model.estimator import SensorModel
-from sensor.utils.main_utils import save_object,load_object
+from scripts.ml.metric.classification_metric import get_classification_score
+from scripts.ml.model.estimator import SensorModel
+from scripts.utils.main_utils import save_object,load_object
 from sklearn.decomposition import PCA
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier

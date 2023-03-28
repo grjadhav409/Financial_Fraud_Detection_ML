@@ -1,7 +1,7 @@
 import pymongo
-from sensor.constant.database import DATABASE_NAME
-from sensor.exception import SensorException
-from sensor.logger import logging
+from scripts.constant.database import DATABASE_NAME
+from scripts.exception import SensorException
+from scripts.logger import logging
 # from sensor.constant.env_variable import MONGODB_URL_KEY
 import certifi
 import os,sys

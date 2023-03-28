@@ -1,5 +1,5 @@
-from sensor.entity.artifact_entity import ClassificationMetricArtifact
-from sensor.exception import SensorException
+from scripts.entity.artifact_entity import ClassificationMetricArtifact
+from scripts.exception import SensorException
 from sklearn.metrics import f1_score,precision_score,recall_score
 import os,sys
 

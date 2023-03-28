@@ -1,7 +1,7 @@
 
 import yaml
-from sensor.exception import SensorException
-from sensor.logger import logging
+from scripts.exception import SensorException
+from scripts.logger import logging
 import os,sys
 import numpy as np
 import dill
